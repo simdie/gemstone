@@ -1,8 +1,8 @@
 "use client";
 
-import { useState, createContext, useContext, ReactNode } from "react";
+import { useState, createContext, useContext, ReactNode, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Send, Loader2, CheckCircle, ArrowRight, Calendar } from "lucide-react";
+import { X, Send, Loader2, CheckCircle, ArrowRight, Calendar, ChevronDown, Check } from "lucide-react";
 
 interface AppointmentModalContextType {
   isOpen: boolean;
@@ -71,6 +71,94 @@ const itemsOfInterest = [
   "Investment Consultation",
   "General Inquiry",
 ];
+
+// Custom Dropdown Component
+interface CustomDropdownProps {
+  value: string;
+  onChange: (value: string) => void;
+  options: string[];
+  placeholder: string;
+  required?: boolean;
+}
+
+function CustomDropdown({ value, onChange, options, placeholder, required }: CustomDropdownProps) {
+  const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  return (
+    <div ref={dropdownRef} className="relative">
+      <button
+        type="button"
+        onClick={() => setIsOpen(!isOpen)}
+        className={`w-full px-4 py-3 rounded-xl bg-secondary/30 border border-border focus:border-primary focus:outline-none transition-all flex items-center justify-between text-left ${
+          !value ? "text-muted-foreground" : "text-foreground"
+        }`}
+      >
+        <span className="truncate">{value || placeholder}</span>
+        <ChevronDown
+          className={`w-5 h-5 text-muted-foreground transition-transform shrink-0 ml-2 ${
+            isOpen ? "rotate-180" : ""
+          }`}
+        />
+      </button>
+
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.15 }}
+            className="absolute z-50 w-full mt-2 rounded-xl bg-secondary/95 backdrop-blur-xl border border-border shadow-2xl overflow-hidden"
+          >
+            <div className="max-h-60 overflow-y-auto scrollbar-thin">
+              {options.map((option, index) => (
+                <button
+                  key={option}
+                  type="button"
+                  onClick={() => {
+                    onChange(option);
+                    setIsOpen(false);
+                  }}
+                  className={`w-full px-4 py-3 text-left flex items-center justify-between transition-colors hover:bg-primary/10 ${
+                    value === option ? "bg-primary/15 text-primary" : "text-foreground"
+                  } ${index !== options.length - 1 ? "border-b border-border/30" : ""}`}
+                >
+                  <span>{option}</span>
+                  {value === option && (
+                    <Check className="w-4 h-4 text-primary shrink-0" />
+                  )}
+                </button>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Hidden input for form validation */}
+      {required && (
+        <input
+          type="text"
+          value={value}
+          required
+          onChange={() => {}}
+          className="sr-only"
+          tabIndex={-1}
+        />
+      )}
+    </div>
+  );
+}
 
 function AppointmentModal() {
   const { isOpen, closeModal } = useAppointmentModal();
@@ -223,42 +311,30 @@ function AppointmentModal() {
                       <label className="block text-sm font-medium mb-2">
                         Item of Interest *
                       </label>
-                      <select
-                        required
+                      <CustomDropdown
                         value={formData.itemInterested}
-                        onChange={(e) =>
-                          setFormData({ ...formData, itemInterested: e.target.value })
+                        onChange={(value) =>
+                          setFormData({ ...formData, itemInterested: value })
                         }
-                        className="w-full px-4 py-3 rounded-xl bg-secondary/30 border border-border focus:border-primary focus:outline-none transition-colors"
-                      >
-                        <option value="">Select an item</option>
-                        {itemsOfInterest.map((item) => (
-                          <option key={item} value={item}>
-                            {item}
-                          </option>
-                        ))}
-                      </select>
+                        options={itemsOfInterest}
+                        placeholder="Select an item"
+                        required
+                      />
                     </div>
 
                     <div>
                       <label className="block text-sm font-medium mb-2">
                         Country *
                       </label>
-                      <select
-                        required
+                      <CustomDropdown
                         value={formData.country}
-                        onChange={(e) =>
-                          setFormData({ ...formData, country: e.target.value })
+                        onChange={(value) =>
+                          setFormData({ ...formData, country: value })
                         }
-                        className="w-full px-4 py-3 rounded-xl bg-secondary/30 border border-border focus:border-primary focus:outline-none transition-colors"
-                      >
-                        <option value="">Select your country</option>
-                        {countries.map((country) => (
-                          <option key={country} value={country}>
-                            {country}
-                          </option>
-                        ))}
-                      </select>
+                        options={countries}
+                        placeholder="Select your country"
+                        required
+                      />
                     </div>
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">

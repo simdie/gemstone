@@ -111,11 +111,11 @@ export function Header() {
                     priority
                   />
                 </div>
-                <div className="hidden sm:block">
-                  <h1 className="font-serif text-xl font-semibold tracking-wide">
+                <div>
+                  <h1 className="font-serif text-lg sm:text-xl font-semibold tracking-wide">
                     The Glowgem
                   </h1>
-                  <p className="text-xs text-muted-foreground tracking-widest uppercase">
+                  <p className="hidden sm:block text-xs text-muted-foreground tracking-widest uppercase">
                     Natural Coloured Gemstones
                   </p>
                 </div>
@@ -203,31 +203,57 @@ export function Header() {
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            className="fixed inset-x-0 top-[76px] z-40 lg:hidden glass border-t border-border/50 overflow-hidden"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 top-0 z-40 lg:hidden bg-background/95 backdrop-blur-lg overflow-y-auto"
           >
-            <nav className="container mx-auto px-6 py-6">
-              <div className="flex flex-col gap-2">
+            {/* Mobile menu header */}
+            <div className="flex items-center justify-between px-6 py-4 border-b border-border/30">
+              <Link href="/" onClick={() => setIsMobileMenuOpen(false)} className="flex items-center gap-3">
+                <div className="relative w-12 h-12 shrink-0">
+                  <Image
+                    src="/images/logo.png"
+                    alt="The Glowgem Logo"
+                    fill
+                    className="object-contain"
+                  />
+                </div>
+                <span className="font-serif text-lg font-semibold">The Glowgem</span>
+              </Link>
+              <button
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="p-2 hover:bg-secondary rounded-lg transition-colors border border-border/50"
+                aria-label="Close menu"
+              >
+                <X className="w-6 h-6" />
+              </button>
+            </div>
+
+            <nav className="px-6 py-8">
+              <div className="flex flex-col gap-1">
                 {navigation.map((item) => (
-                  <div key={item.name}>
+                  <div key={item.name} className="border-b border-border/20 last:border-b-0">
                     <Link
                       href={item.href}
                       onClick={() => setIsMobileMenuOpen(false)}
-                      className="block py-3 text-lg font-medium hover:text-primary transition-colors"
+                      className="flex items-center justify-between py-4 text-lg font-medium hover:text-primary transition-colors"
                     >
                       {item.name}
+                      {item.children && (
+                        <ChevronDown className="w-5 h-5 text-muted-foreground" />
+                      )}
                     </Link>
                     {item.children && (
-                      <div className="pl-4 space-y-2 mt-2">
+                      <div className="pl-4 pb-4 space-y-1">
                         {item.children.map((child) => (
                           <Link
                             key={child.name}
                             href={child.href}
                             onClick={() => setIsMobileMenuOpen(false)}
-                            className="block py-2 text-muted-foreground hover:text-primary transition-colors"
+                            className="flex items-center gap-2 py-2.5 text-muted-foreground hover:text-primary transition-colors"
                           >
+                            <span className="w-1.5 h-1.5 rounded-full bg-primary/50" />
                             {child.name}
                           </Link>
                         ))}
@@ -235,16 +261,35 @@ export function Header() {
                     )}
                   </div>
                 ))}
-                <button
-                  onClick={() => {
-                    setIsMobileMenuOpen(false);
-                    openModal();
-                  }}
-                  className="mt-4 w-full py-3 bg-primary text-primary-foreground rounded-full text-center font-medium"
-                >
-                  Book Appointment
-                </button>
               </div>
+
+              {/* Contact info */}
+              <div className="mt-8 pt-6 border-t border-border/30 space-y-4">
+                <a
+                  href="tel:+447403824831"
+                  className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors"
+                >
+                  <Phone className="w-5 h-5" />
+                  +44 740 382 4831
+                </a>
+                <a
+                  href="mailto:support@theglowgem.com"
+                  className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors"
+                >
+                  <Mail className="w-5 h-5" />
+                  support@theglowgem.com
+                </a>
+              </div>
+
+              <button
+                onClick={() => {
+                  setIsMobileMenuOpen(false);
+                  openModal();
+                }}
+                className="mt-8 w-full py-4 bg-primary text-primary-foreground rounded-full text-center font-medium text-lg"
+              >
+                Book Appointment
+              </button>
             </nav>
           </motion.div>
         )}
