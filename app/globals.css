@@ -1,0 +1,100 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 222 47% 6%;
+  --foreground: 210 40% 98%;
+  
+  --card: 222 47% 8%;
+  --card-foreground: 210 40% 98%;
+  
+  --popover: 222 47% 8%;
+  --popover-foreground: 210 40% 98%;
+  
+  --primary: 45 100% 65%;
+  --primary-foreground: 222 47% 6%;
+  
+  --secondary: 217 33% 17%;
+  --secondary-foreground: 210 40% 98%;
+  
+  --muted: 217 33% 17%;
+  --muted-foreground: 215 20% 65%;
+  
+  --accent: 45 100% 65%;
+  --accent-foreground: 222 47% 6%;
+  
+  --border: 217 33% 17%;
+  --input: 217 33% 17%;
+  --ring: 45 100% 65%;
+  
+  --radius: 0.75rem;
+}
+
+* {
+  border-color: hsl(var(--border));
+}
+
+body {
+  background: hsl(var(--background));
+  color: hsl(var(--foreground));
+}
+
+/* Custom scrollbar for dark theme */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--background));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--muted));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--muted-foreground));
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Glass effect utility */
+.glass {
+  background: rgba(15, 23, 42, 0.8);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Gradient text utility */
+.gradient-text {
+  background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(45 100% 75%) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Glow effect */
+.glow {
+  box-shadow: 0 0 40px rgba(212, 175, 55, 0.15);
+}
+
+/* Animated gradient border */
+@keyframes gradient-shift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.animated-border {
+  background: linear-gradient(90deg, hsl(var(--primary)), hsl(45 100% 75%), hsl(var(--primary)));
+  background-size: 200% 200%;
+  animation: gradient-shift 3s ease infinite;
+}
