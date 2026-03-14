@@ -13,7 +13,7 @@ const featuredGems = [
     weight: "3.24 ct",
     origin: "Myanmar",
     price: "Contact for pricing",
-    image: "/assets/images/home/gc1.png",
+    image: "/images/featured/burma-ruby.jpg",
     rating: 5,
   },
   {
@@ -21,7 +21,7 @@ const featuredGems = [
     weight: "5.12 ct",
     origin: "Kashmir",
     price: "Contact for pricing",
-    image: "/assets/images/home/gc2.png",
+    image: "/images/featured/kashmir-sapphire.jpg",
     rating: 5,
   },
   {
@@ -29,7 +29,7 @@ const featuredGems = [
     weight: "4.87 ct",
     origin: "Colombia",
     price: "Contact for pricing",
-    image: "/assets/images/home/gc3.png",
+    image: "/images/featured/colombian-emerald.jpg",
     rating: 5,
   },
   {
@@ -37,7 +37,7 @@ const featuredGems = [
     weight: "8.45 ct",
     origin: "Iran",
     price: "Contact for pricing",
-    image: "/assets/images/home/gc4.png",
+    image: "/images/collections/turquoise.jpg",
     rating: 5,
   },
   {
@@ -45,15 +45,15 @@ const featuredGems = [
     weight: "6.32 ct",
     origin: "Brazil",
     price: "Contact for pricing",
-    image: "/assets/images/home/gc5.png",
+    image: "/images/collections/topaz.jpg",
     rating: 5,
   },
   {
-    name: "Red Spinel",
-    weight: "2.89 ct",
-    origin: "Tanzania",
+    name: "Natural Carnelian",
+    weight: "4.89 ct",
+    origin: "India",
     price: "Contact for pricing",
-    image: "/assets/images/home/gc6.png",
+    image: "/images/collections/carnelian.jpg",
     rating: 5,
   },
 ];

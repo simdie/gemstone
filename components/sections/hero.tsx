@@ -133,7 +133,7 @@ export function Hero() {
                 {/* Main image */}
                 <div className="relative rounded-full overflow-hidden border-2 border-primary/20 glow">
                   <Image
-                    src="/assets/images/hand_bg.png"
+                    src="/images/hero-gemstone.jpg"
                     alt="Premium gemstone collection"
                     width={600}
                     height={600}

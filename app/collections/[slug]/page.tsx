@@ -33,9 +33,9 @@ const gemstoneData: Record<string, {
       { label: "Origin", value: "Myanmar, Thailand, Sri Lanka" },
     ],
     images: [
-      "/assets/images/home/rubyH.png",
-      "/assets/images/home/gc1.png",
-      "/assets/images/home/gc7.png",
+      "/images/collections/ruby.jpg",
+      "/images/featured/burma-ruby.jpg",
+      "/images/collections/ruby.jpg",
     ],
     color: "from-red-500/30 to-red-900/30",
     relatedGems: ["sapphire", "spinel", "garnet"],
@@ -54,9 +54,9 @@ const gemstoneData: Record<string, {
       { label: "Origin", value: "Kashmir, Sri Lanka, Madagascar" },
     ],
     images: [
-      "/assets/images/home/sapphireH.png",
-      "/assets/images/home/gc2.png",
-      "/assets/images/home/gc8.png",
+      "/images/collections/sapphire.jpg",
+      "/images/featured/kashmir-sapphire.jpg",
+      "/images/collections/sapphire.jpg",
     ],
     color: "from-blue-500/30 to-blue-900/30",
     relatedGems: ["ruby", "tanzanite", "spinel"],
@@ -75,9 +75,9 @@ const gemstoneData: Record<string, {
       { label: "Origin", value: "Colombia, Zambia, Brazil" },
     ],
     images: [
-      "/assets/images/home/emeraldH.png",
-      "/assets/images/home/gc3.png",
-      "/assets/images/emerald/emeraldBanner.png",
+      "/images/collections/emerald.jpg",
+      "/images/featured/colombian-emerald.jpg",
+      "/images/collections/emerald.jpg",
     ],
     color: "from-emerald-500/30 to-emerald-900/30",
     relatedGems: ["peridot", "tourmaline", "tsavorite"],
@@ -107,7 +107,7 @@ export default function GemstoneDetailPage({
   const data = gemstoneData[slug] || {
     name: slug.charAt(0).toUpperCase() + slug.slice(1),
     ...defaultGemData,
-    images: [`/assets/images/home/${slug}H.png`, `/assets/images/home/gc1.png`, `/assets/images/home/gc2.png`],
+    images: [`/images/collections/${slug}.jpg`, `/images/hero-gemstone.jpg`, `/images/collections/${slug}.jpg`],
     color: "from-primary/30 to-secondary/30",
   };
 

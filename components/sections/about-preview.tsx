@@ -53,7 +53,7 @@ export function AboutPreview() {
               <GradientBorder className="overflow-hidden">
                 <div className="relative aspect-[4/5]">
                   <Image
-                    src="/assets/images/about/richard.png"
+                    src="/images/about-glen.jpg"
                     alt="Glenn Richard Arsher - CEO"
                     fill
                     className="object-cover"
