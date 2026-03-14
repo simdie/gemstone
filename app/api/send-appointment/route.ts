@@ -25,7 +25,7 @@ export async function POST(request: NextRequest) {
 
     // Create email content
     const emailContent = `
-New Appointment Request from Glen Gemstone Website
+New Appointment Request from The Glowgem Website
 
 Full Name: ${fullName}
 Email: ${email}
@@ -37,7 +37,7 @@ Message:
 ${message}
 
 ---
-This message was sent from the Glen Gemstone website appointment form.
+This message was sent from The Glowgem website appointment form.
     `.trim();
 
     // For now, we'll use a simple email service approach
@@ -58,7 +58,7 @@ This message was sent from the Glen Gemstone website appointment form.
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          from: "Glen Gemstone <noreply@theglowgem.com>",
+          from: "The Glowgem <noreply@theglowgem.com>",
           to: ["support@theglowgem.com"],
           reply_to: email,
           subject: `New Appointment Request: ${itemInterested} - ${fullName}`,
@@ -86,7 +86,7 @@ This message was sent from the Glen Gemstone website appointment form.
               
               <hr style="border: none; border-top: 1px solid #ddd; margin: 30px 0;">
               <p style="color: #888; font-size: 12px;">
-                This message was sent from the Glen Gemstone website appointment form.
+                This message was sent from The Glowgem website appointment form.
               </p>
             </div>
           `,

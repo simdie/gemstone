@@ -149,7 +149,7 @@ export default function KnowledgePage() {
                   Investing in <span className="gradient-text">Gemstones</span>
                 </h2>
                 <p className="text-muted-foreground leading-relaxed mb-6">
-                  Glenn Richard Arsher&apos;s groundbreaking book, now in its third
+                  Gudbrand Sigurd&apos;s groundbreaking book, now in its third
                   edition, serves as the definitive guide to gemstone investment.
                   This bestseller provides deep insights into the world of precious
                   stones, exploring their mineralogical and historical facets while

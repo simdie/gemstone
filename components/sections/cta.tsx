@@ -62,11 +62,11 @@ export function CTA() {
               </Magnetic>
               <Magnetic>
                 <a
-                  href="tel:+447403824832"
+                  href="tel:+447403824831"
                   className="group inline-flex items-center justify-center gap-3 px-8 py-4 glass rounded-full font-medium hover:bg-secondary/50 transition-all"
                 >
                   <Phone className="w-4 h-4" />
-                  +44 740 382 4832
+                  +44 740 382 4831
                 </a>
               </Magnetic>
             </div>

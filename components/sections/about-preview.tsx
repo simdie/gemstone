@@ -54,7 +54,7 @@ export function AboutPreview() {
                 <div className="relative aspect-[4/5]">
                   <Image
                     src="/images/about-glen.jpg"
-                    alt="Glenn Richard Arsher - CEO"
+                    alt="Gudbrand Sigurd - CEO"
                     fill
                     className="object-cover"
                   />
@@ -94,14 +94,14 @@ export function AboutPreview() {
           <div>
             <FadeUp>
               <span className="text-primary text-sm font-medium tracking-widest uppercase mb-4 block">
-                About Glen Gemstone
+                About The Glowgem
               </span>
               <h2 className="font-serif text-4xl md:text-5xl mb-6">
                 A Legacy of{" "}
                 <span className="gradient-text">Excellence</span>
               </h2>
               <p className="text-muted-foreground text-lg mb-6 leading-relaxed">
-                Glen Gemstone stands as a beacon of excellence in the world of
+                The Glowgem stands as a beacon of excellence in the world of
                 precious stones, offering a dazzling array of meticulously
                 sourced and curated gems.
               </p>

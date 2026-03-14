@@ -11,27 +11,27 @@ import { useAppointmentModal } from "@/components/appointment-modal";
 
 const team = [
   {
-    name: "Sigurd Knudsen",
+    name: "Gudbrand Sigurd",
     role: "CEO & Founder",
-    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Sigurd2.png-arD7pzMiIU3HVuBELsx630pyzl9bzO.jpeg",
+    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Sigurd2.png-LGAZYWFopiidN4XgIlnRz26dmYUzrp.jpeg",
     bio: "Over 30 years of expertise in natural coloured gemstones. Doctorate in economics and certifications from leading gemological institutes worldwide.",
   },
   {
     name: "Alexander Petrov",
     role: "Head Gemologist",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=500&fit=crop&crop=face",
+    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/alexander.png-ePtKt10BkZueYUcKragrmWRa8g69N6.jpeg",
     bio: "Former GIA instructor with expertise in ruby and sapphire evaluation. 20+ years of field experience in Myanmar and Sri Lanka.",
   },
   {
     name: "Isabella Romano",
     role: "Collections Director",
-    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=500&fit=crop&crop=face",
+    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/isabella.png-iaLuq4SLwnMRoFQVKmIi7XRWeSULFQ.jpeg",
     bio: "Specialist in rare and investment-grade gemstones. Previously managed acquisitions for major auction houses.",
   },
   {
     name: "Nicolas Fontaine",
     role: "Client Relations",
-    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=500&fit=crop&crop=face",
+    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/nicholas.png-eovdHDmadhTxtYO9hVMq2dfS6jZkoR.jpeg",
     bio: "Luxury goods specialist dedicated to providing exceptional client experiences and personalized consultations.",
   },
 ];
@@ -60,7 +60,7 @@ const values = [
 ];
 
 const milestones = [
-  { year: "1994", event: "Glen Gemstone founded in London" },
+  { year: "1994", event: "The Glowgem founded in London" },
   { year: "2001", event: "Established partnerships with Myanmar mines" },
   { year: "2008", event: "Launched investment-grade gemstone division" },
   { year: "2015", event: "Published 'Investing in Gemstones' bestseller" },
@@ -89,14 +89,14 @@ export default function AboutPage() {
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <FadeUp>
               <span className="text-primary text-sm font-medium tracking-widest uppercase mb-4 block">
-                About Glen Gemstone
+                About The Glowgem
               </span>
               <h1 className="font-serif text-5xl md:text-6xl mb-6">
                 A Legacy of{" "}
                 <span className="gradient-text">Excellence</span>
               </h1>
               <p className="text-lg text-muted-foreground leading-relaxed mb-8">
-                Glen Gemstone stands as a beacon of excellence in the world of
+                The Glowgem stands as a beacon of excellence in the world of
                 precious stones, offering a dazzling array of meticulously
                 sourced and curated gems. With a rich heritage steeped in the
                 artistry of gemstones, we blend expertise, innovation, and
@@ -124,7 +124,7 @@ export default function AboutPage() {
                 <div className="relative aspect-[4/5] overflow-hidden rounded-2xl">
                   <Image
                     src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Sigurd.png-SZuAZ7BzwsUUMMs3y0lNA3xLo3rmlZ.jpeg"
-                    alt="Sigurd Knudsen - CEO"
+                    alt="Gudbrand Sigurd - CEO"
                     fill
                     className="object-cover"
                     priority
@@ -168,7 +168,7 @@ export default function AboutPage() {
             <FadeUp delay={0.2}>
               <div className="prose prose-lg prose-invert max-w-none">
                 <p className="text-muted-foreground leading-relaxed mb-6">
-                  Founded in 1994 by Glenn Richard Arsher, Glen Gemstone began
+                  Founded in 1994 by Gudbrand Sigurd, The Glowgem began
                   as a passion project rooted in a deep fascination with natural
                   coloured gemstones. What started as a small operation sourcing
                   exceptional specimens has grown into one of Europe&apos;s leading
@@ -183,7 +183,7 @@ export default function AboutPage() {
                   collectors and investors alike.
                 </p>
                 <p className="text-muted-foreground leading-relaxed">
-                  Today, Glen Gemstone continues to uphold the highest standards
+                  Today, The Glowgem continues to uphold the highest standards
                   of excellence, offering by-appointment consultations to
                   discerning clients who appreciate the rare beauty and enduring
                   value of natural gemstones.

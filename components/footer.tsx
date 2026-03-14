@@ -74,7 +74,7 @@ export function Footer() {
               </div>
               <div>
                 <h3 className="font-serif text-xl font-semibold">
-                  Glen Gemstone
+                  The Glowgem
                 </h3>
                 <p className="text-xs text-muted-foreground tracking-widest uppercase">
                   Est. 1994
@@ -88,18 +88,18 @@ export function Footer() {
             </p>
             <div className="space-y-3">
               <a
-                href="tel:+447403824832"
+                href="tel:+447403824831"
                 className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors"
               >
                 <Phone className="w-4 h-4" />
-                +44 740 382 4832
+                +44 740 382 4831
               </a>
               <a
-                href="mailto:support@glengemstone.com"
+                href="mailto:support@theglowgem.com"
                 className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors"
               >
                 <Mail className="w-4 h-4" />
-                support@glengemstone.com
+                support@theglowgem.com
               </a>
               <div className="flex items-center gap-3 text-muted-foreground">
                 <MapPin className="w-4 h-4" />
@@ -169,7 +169,7 @@ export function Footer() {
         {/* Bottom bar */}
         <div className="flex flex-col md:flex-row items-center justify-between gap-4 pt-8 border-t border-border/50">
           <p className="text-sm text-muted-foreground">
-            &copy; {new Date().getFullYear()} Glen Gemstone Ltd. All rights
+            &copy; {new Date().getFullYear()} The Glowgem Ltd. All rights
             reserved.
           </p>
           <div className="flex items-center gap-6 text-sm text-muted-foreground">
