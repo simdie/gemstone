@@ -13,25 +13,25 @@ const team = [
   {
     name: "Sigurd Knudsen",
     role: "CEO & Founder",
-    image: "/assets/images/about/Sigurd2.png",
+    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Sigurd2.png-arD7pzMiIU3HVuBELsx630pyzl9bzO.jpeg",
     bio: "Over 30 years of expertise in natural coloured gemstones. Doctorate in economics and certifications from leading gemological institutes worldwide.",
   },
   {
     name: "Alexander Petrov",
     role: "Head Gemologist",
-    image: "/assets/images/about/alex_new.jpg",
+    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=500&fit=crop&crop=face",
     bio: "Former GIA instructor with expertise in ruby and sapphire evaluation. 20+ years of field experience in Myanmar and Sri Lanka.",
   },
   {
     name: "Isabella Romano",
     role: "Collections Director",
-    image: "/assets/images/about/bella_new.jpg",
+    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=500&fit=crop&crop=face",
     bio: "Specialist in rare and investment-grade gemstones. Previously managed acquisitions for major auction houses.",
   },
   {
     name: "Nicolas Fontaine",
     role: "Client Relations",
-    image: "/assets/images/about/nicolas_new.jpg",
+    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=500&fit=crop&crop=face",
     bio: "Luxury goods specialist dedicated to providing exceptional client experiences and personalized consultations.",
   },
 ];
@@ -123,7 +123,7 @@ export default function AboutPage() {
               <GradientBorder>
                 <div className="relative aspect-[4/5] overflow-hidden rounded-2xl">
                   <Image
-                    src="/assets/images/about/Sigurd.png"
+                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Sigurd.png-SZuAZ7BzwsUUMMs3y0lNA3xLo3rmlZ.jpeg"
                     alt="Sigurd Knudsen - CEO"
                     fill
                     className="object-cover"

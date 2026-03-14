@@ -144,13 +144,13 @@ function AppointmentModal() {
 
           {/* Modal */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.95, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.95, y: 20 }}
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.95 }}
             transition={{ duration: 0.3, ease: "easeOut" }}
-            className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-50 w-full max-w-lg max-h-[90vh] overflow-y-auto"
+            className="fixed inset-0 z-50 flex items-center justify-center p-4"
           >
-            <div className="glass rounded-3xl p-8 mx-4 border border-border/50">
+            <div className="glass rounded-3xl p-8 w-full max-w-lg max-h-[90vh] overflow-y-auto border border-border/50 relative">
               {/* Close button */}
               <button
                 onClick={handleClose}
