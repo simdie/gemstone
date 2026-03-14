@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ChevronDown, Phone, Mail } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -101,8 +102,14 @@ export function Header() {
                 whileHover={{ scale: 1.02 }}
                 className="flex items-center gap-3"
               >
-                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-amber-400 flex items-center justify-center">
-                  <span className="text-primary-foreground font-serif font-bold text-xl">G</span>
+                <div className="relative w-14 h-14 shrink-0">
+                  <Image
+                    src="/images/logo.png"
+                    alt="The Glowgem Logo"
+                    fill
+                    className="object-contain"
+                    priority
+                  />
                 </div>
                 <div className="hidden sm:block">
                   <h1 className="font-serif text-xl font-semibold tracking-wide">
