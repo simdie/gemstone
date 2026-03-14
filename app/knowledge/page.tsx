@@ -12,44 +12,50 @@ const articles = [
   {
     title: "The Four C's of Coloured Gemstones",
     excerpt: "Understanding colour, clarity, cut, and carat weight in natural gemstones.",
-    image: "/assets/images/home/gc1.png",
+    image: "/images/knowledge/four-cs.jpg",
     category: "Education",
     readTime: "8 min read",
+    slug: "four-cs-coloured-gemstones",
   },
   {
     title: "Investment Grade Gemstones",
     excerpt: "A comprehensive guide to evaluating gemstones for investment potential.",
-    image: "/assets/images/home/gc2.png",
+    image: "/images/knowledge/investment-gems.jpg",
     category: "Investment",
     readTime: "12 min read",
+    slug: "investment-grade-gemstones",
   },
   {
     title: "Ethical Sourcing in the Gemstone Industry",
     excerpt: "How we ensure responsible and sustainable gemstone sourcing practices.",
-    image: "/assets/images/home/gc3.png",
+    image: "/images/knowledge/ethical-sourcing.jpg",
     category: "Ethics",
     readTime: "6 min read",
+    slug: "ethical-sourcing-gemstone-industry",
   },
   {
     title: "Understanding Gemstone Treatments",
     excerpt: "Learn about common treatments and why natural, untreated gems are valuable.",
-    image: "/assets/images/home/gc4.png",
+    image: "/images/knowledge/gem-treatments.jpg",
     category: "Education",
     readTime: "10 min read",
+    slug: "understanding-gemstone-treatments",
   },
   {
     title: "The History of Burmese Rubies",
     excerpt: "Exploring the legendary Mogok Valley and its prized pigeon blood rubies.",
-    image: "/assets/images/home/gc5.png",
+    image: "/images/knowledge/burmese-rubies.jpg",
     category: "History",
     readTime: "15 min read",
+    slug: "history-burmese-rubies",
   },
   {
     title: "Certification and Authentication",
     excerpt: "Why GIA and other certifications matter for your gemstone purchase.",
-    image: "/assets/images/home/gc6.png",
+    image: "/images/knowledge/certification.jpg",
     category: "Education",
     readTime: "7 min read",
+    slug: "certification-authentication",
   },
 ];
 
@@ -135,7 +141,7 @@ export default function KnowledgePage() {
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               <div className="relative aspect-[4/3] rounded-3xl overflow-hidden">
                 <Image
-                  src="/assets/images/home/gemstoneH.png"
+                  src="/images/knowledge/gemstone-book.jpg"
                   alt="Investing in Gemstones book"
                   fill
                   className="object-cover"
@@ -199,7 +205,7 @@ export default function KnowledgePage() {
             {articles.map((article) => (
               <StaggerItem key={article.title}>
                 <ScaleHover>
-                  <Link href="/contact" className="block group">
+                  <Link href={`/knowledge/${article.slug}`} className="block group">
                     <div className="glass rounded-3xl overflow-hidden h-full">
                       <div className="relative aspect-[16/10] overflow-hidden">
                         <Image
