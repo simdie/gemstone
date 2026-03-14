@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Phone, Mail, MapPin, ArrowUpRight } from "lucide-react";
+import { useAppointmentModal } from "@/components/appointment-modal";
 
 const footerLinks = {
   collections: [
@@ -28,6 +29,8 @@ const footerLinks = {
 };
 
 export function Footer() {
+  const { openModal } = useAppointmentModal();
+
   return (
     <footer className="relative overflow-hidden">
       {/* Gradient overlay */}
@@ -50,13 +53,13 @@ export function Footer() {
             Experience the world&apos;s finest natural coloured gemstones.
             Schedule a private consultation with our expert gemologists.
           </p>
-          <Link
-            href="/contact"
+          <button
+            onClick={openModal}
             className="inline-flex items-center gap-2 px-8 py-4 bg-primary text-primary-foreground rounded-full font-medium hover:bg-primary/90 transition-all group"
           >
             Book Your Appointment
             <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
-          </Link>
+          </button>
         </motion.div>
 
         {/* Links grid */}
@@ -71,7 +74,7 @@ export function Footer() {
               </div>
               <div>
                 <h3 className="font-serif text-xl font-semibold">
-                  Glen Gemstone
+                  The Glowgem
                 </h3>
                 <p className="text-xs text-muted-foreground tracking-widest uppercase">
                   Est. 1994
@@ -85,18 +88,18 @@ export function Footer() {
             </p>
             <div className="space-y-3">
               <a
-                href="tel:+447403824832"
+                href="tel:+447403824831"
                 className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors"
               >
                 <Phone className="w-4 h-4" />
-                +44 740 382 4832
+                +44 740 382 4831
               </a>
               <a
-                href="mailto:support@glengemstone.com"
+                href="mailto:support@theglowgem.com"
                 className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors"
               >
                 <Mail className="w-4 h-4" />
-                support@glengemstone.com
+                support@theglowgem.com
               </a>
               <div className="flex items-center gap-3 text-muted-foreground">
                 <MapPin className="w-4 h-4" />
@@ -166,7 +169,7 @@ export function Footer() {
         {/* Bottom bar */}
         <div className="flex flex-col md:flex-row items-center justify-between gap-4 pt-8 border-t border-border/50">
           <p className="text-sm text-muted-foreground">
-            &copy; {new Date().getFullYear()} Glen Gemstone Ltd. All rights
+            &copy; {new Date().getFullYear()} The Glowgem Ltd. All rights
             reserved.
           </p>
           <div className="flex items-center gap-6 text-sm text-muted-foreground">

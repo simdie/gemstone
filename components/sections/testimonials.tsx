@@ -12,7 +12,7 @@ const testimonials = [
     role: "Private Collector",
     image: "/assets/images/about/bella.png",
     content:
-      "Glen Gemstone's expertise in natural coloured gemstones is unparalleled. The 5-carat Kashmir sapphire they sourced for my collection exceeded all expectations.",
+      "The Glowgem's expertise in natural coloured gemstones is unparalleled. The 5-carat Kashmir sapphire they sourced for my collection exceeded all expectations.",
     rating: 5,
   },
   {
@@ -20,7 +20,7 @@ const testimonials = [
     role: "Investment Advisor",
     image: "/assets/images/about/nicolas.png",
     content:
-      "For over a decade, I've relied on Glen Gemstone for investment-grade gemstones. Their certification and provenance documentation is impeccable.",
+      "For over a decade, I've relied on The Glowgem for investment-grade gemstones. Their certification and provenance documentation is impeccable.",
     rating: 5,
   },
   {
@@ -28,7 +28,7 @@ const testimonials = [
     role: "Jewellery Designer",
     image: "/assets/images/about/alex.png",
     content:
-      "As a designer, quality is everything. Glen Gemstone consistently provides the most exceptional stones that bring my creations to life.",
+      "As a designer, quality is everything. The Glowgem consistently provides the most exceptional stones that bring my creations to life.",
     rating: 5,
   },
   {

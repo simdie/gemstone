@@ -5,6 +5,7 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ChevronDown, Phone, Mail } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useAppointmentModal } from "@/components/appointment-modal";
 
 const navigation = [
   { name: "Home", href: "/" },
@@ -37,6 +38,7 @@ export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const { openModal } = useAppointmentModal();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -58,18 +60,18 @@ export function Header() {
           <div className="flex items-center justify-between text-sm text-muted-foreground">
             <div className="flex items-center gap-6">
               <a
-                href="tel:+447403824832"
+                href="tel:+447403824831"
                 className="flex items-center gap-2 hover:text-primary transition-colors"
               >
                 <Phone className="w-4 h-4" />
-                +44 740 382 4832
+                +44 740 382 4831
               </a>
               <a
-                href="mailto:support@glengemstone.com"
+                href="mailto:support@theglowgem.com"
                 className="flex items-center gap-2 hover:text-primary transition-colors"
               >
                 <Mail className="w-4 h-4" />
-                support@glengemstone.com
+                support@theglowgem.com
               </a>
             </div>
             <div className="text-xs">
@@ -104,7 +106,7 @@ export function Header() {
                 </div>
                 <div className="hidden sm:block">
                   <h1 className="font-serif text-xl font-semibold tracking-wide">
-                    Glen Gemstone
+                    The Glowgem
                   </h1>
                   <p className="text-xs text-muted-foreground tracking-widest uppercase">
                     Natural Coloured Gemstones
@@ -166,12 +168,12 @@ export function Header() {
 
             {/* CTA Button */}
             <div className="hidden lg:block">
-              <Link
-                href="/contact"
+              <button
+                onClick={openModal}
                 className="px-6 py-2.5 bg-primary text-primary-foreground rounded-full text-sm font-medium hover:bg-primary/90 transition-colors"
               >
                 Book Appointment
-              </Link>
+              </button>
             </div>
 
             {/* Mobile menu button */}
@@ -226,13 +228,15 @@ export function Header() {
                     )}
                   </div>
                 ))}
-                <Link
-                  href="/contact"
-                  onClick={() => setIsMobileMenuOpen(false)}
+                <button
+                  onClick={() => {
+                    setIsMobileMenuOpen(false);
+                    openModal();
+                  }}
                   className="mt-4 w-full py-3 bg-primary text-primary-foreground rounded-full text-center font-medium"
                 >
                   Book Appointment
-                </Link>
+                </button>
               </div>
             </nav>
           </motion.div>

@@ -13,7 +13,7 @@ const faqs = [
     category: "General",
     questions: [
       {
-        q: "What makes Glen Gemstone different from other gemstone dealers?",
+        q: "What makes The Glowgem different from other gemstone dealers?",
         a: "With over 30 years of experience, we specialize exclusively in natural, untreated coloured gemstones. Every piece in our collection is certified by leading gemological institutes like GIA, and we offer personalized consultations to match you with the perfect gemstone for your needs.",
       },
       {

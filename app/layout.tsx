@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
+import { Providers } from "@/components/providers";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -13,12 +14,12 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Glen Gemstone | Expert in Natural Coloured Gemstones",
+  title: "The Glowgem | Expert in Natural Coloured Gemstones",
   description:
     "30 years of experience in the international gemstone trade. Certified natural gemstones & crystals from around the world.",
   keywords:
-    "Glen Gemstone, Coloured Gemstones, Natural Gemstones, Gemstone Trade, Crystals, Gemstone Certification",
-  authors: [{ name: "Glen Gemstone" }],
+    "The Glowgem, Coloured Gemstones, Natural Gemstones, Gemstone Trade, Crystals, Gemstone Certification",
+  authors: [{ name: "The Glowgem" }],
 };
 
 export const viewport: Viewport = {
@@ -33,11 +34,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en" className="dark" data-scroll-behavior="smooth">
       <body
         className={`${inter.variable} ${playfair.variable} font-sans antialiased`}
       >
-        {children}
+        <Providers>
+          {children}
+        </Providers>
       </body>
     </html>
   );
