@@ -1,11 +1,13 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Link from "next/link";
 import { ArrowRight, Calendar, Phone } from "lucide-react";
 import { FadeUp, Float, Magnetic } from "@/components/motion";
+import { useAppointmentModal } from "@/components/appointment-modal";
 
 export function CTA() {
+  const { openModal } = useAppointmentModal();
+
   return (
     <section className="py-32 relative overflow-hidden">
       {/* Background */}
@@ -50,13 +52,13 @@ export function CTA() {
           <FadeUp delay={0.3}>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Magnetic>
-                <Link
-                  href="/contact"
+                <button
+                  onClick={openModal}
                   className="group inline-flex items-center justify-center gap-3 px-8 py-4 bg-primary text-primary-foreground rounded-full font-medium hover:bg-primary/90 transition-all"
                 >
                   Book Consultation
                   <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-                </Link>
+                </button>
               </Magnetic>
               <Magnetic>
                 <a

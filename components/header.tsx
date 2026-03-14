@@ -5,6 +5,7 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ChevronDown, Phone, Mail } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useAppointmentModal } from "@/components/appointment-modal";
 
 const navigation = [
   { name: "Home", href: "/" },
@@ -37,6 +38,7 @@ export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const { openModal } = useAppointmentModal();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -166,12 +168,12 @@ export function Header() {
 
             {/* CTA Button */}
             <div className="hidden lg:block">
-              <Link
-                href="/contact"
+              <button
+                onClick={openModal}
                 className="px-6 py-2.5 bg-primary text-primary-foreground rounded-full text-sm font-medium hover:bg-primary/90 transition-colors"
               >
                 Book Appointment
-              </Link>
+              </button>
             </div>
 
             {/* Mobile menu button */}
@@ -226,13 +228,15 @@ export function Header() {
                     )}
                   </div>
                 ))}
-                <Link
-                  href="/contact"
-                  onClick={() => setIsMobileMenuOpen(false)}
+                <button
+                  onClick={() => {
+                    setIsMobileMenuOpen(false);
+                    openModal();
+                  }}
                   className="mt-4 w-full py-3 bg-primary text-primary-foreground rounded-full text-center font-medium"
                 >
                   Book Appointment
-                </Link>
+                </button>
               </div>
             </nav>
           </motion.div>

@@ -3,34 +3,35 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Award, Globe, Shield, Gem, Users, Target, Heart } from "lucide-react";
+import { ArrowRight, Award, Globe, Shield, Heart } from "lucide-react";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { FadeUp, StaggerContainer, StaggerItem, AnimatedCounter, GradientBorder, ScaleHover } from "@/components/motion";
+import { useAppointmentModal } from "@/components/appointment-modal";
 
 const team = [
   {
-    name: "Glenn Richard Arsher",
+    name: "Sigurd Knudsen",
     role: "CEO & Founder",
-    image: "/assets/images/about/richard.png",
+    image: "/assets/images/about/Sigurd2.png",
     bio: "Over 30 years of expertise in natural coloured gemstones. Doctorate in economics and certifications from leading gemological institutes worldwide.",
   },
   {
     name: "Alexander Petrov",
     role: "Head Gemologist",
-    image: "/assets/images/about/alex.png",
+    image: "/assets/images/about/alex_new.jpg",
     bio: "Former GIA instructor with expertise in ruby and sapphire evaluation. 20+ years of field experience in Myanmar and Sri Lanka.",
   },
   {
     name: "Isabella Romano",
     role: "Collections Director",
-    image: "/assets/images/about/bella.png",
+    image: "/assets/images/about/bella_new.jpg",
     bio: "Specialist in rare and investment-grade gemstones. Previously managed acquisitions for major auction houses.",
   },
   {
     name: "Nicolas Fontaine",
     role: "Client Relations",
-    image: "/assets/images/about/nicolas.png",
+    image: "/assets/images/about/nicolas_new.jpg",
     bio: "Luxury goods specialist dedicated to providing exceptional client experiences and personalized consultations.",
   },
 ];
@@ -75,6 +76,8 @@ const stats = [
 ];
 
 export default function AboutPage() {
+  const { openModal } = useAppointmentModal();
+
   return (
     <main className="min-h-screen">
       <Header />
@@ -107,12 +110,12 @@ export default function AboutPage() {
                   Explore Collections
                   <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                 </Link>
-                <Link
-                  href="/contact"
+                <button
+                  onClick={openModal}
                   className="inline-flex items-center gap-2 px-6 py-3 glass rounded-full font-medium hover:bg-secondary/50 transition-colors"
                 >
                   Book Consultation
-                </Link>
+                </button>
               </div>
             </FadeUp>
 
@@ -120,8 +123,8 @@ export default function AboutPage() {
               <GradientBorder>
                 <div className="relative aspect-[4/5] overflow-hidden rounded-2xl">
                   <Image
-                    src="/assets/images/about/richard.png"
-                    alt="Glenn Richard Arsher - CEO"
+                    src="/assets/images/about/Sigurd.png"
+                    alt="Sigurd Knudsen - CEO"
                     fill
                     className="object-cover"
                     priority
@@ -322,13 +325,13 @@ export default function AboutPage() {
               Schedule a private consultation and discover gemstones that speak
               to your unique taste and collection goals.
             </p>
-            <Link
-              href="/contact"
+            <button
+              onClick={openModal}
               className="inline-flex items-center gap-2 px-8 py-4 bg-primary text-primary-foreground rounded-full font-medium hover:bg-primary/90 transition-colors group"
             >
               Book Consultation
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-            </Link>
+            </button>
           </FadeUp>
         </div>
       </section>

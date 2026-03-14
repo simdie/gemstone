@@ -1,13 +1,13 @@
 "use client";
 
 import { use } from "react";
-import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, Award, Globe, Shield, Gem, ArrowUpRight } from "lucide-react";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { FadeUp, StaggerContainer, StaggerItem, GradientBorder, ScaleHover } from "@/components/motion";
+import { useAppointmentModal } from "@/components/appointment-modal";
 
 const gemstoneData: Record<string, {
   name: string;
@@ -104,6 +104,7 @@ export default function GemstoneDetailPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = use(params);
+  const { openModal } = useAppointmentModal();
   const data = gemstoneData[slug] || {
     name: slug.charAt(0).toUpperCase() + slug.slice(1),
     ...defaultGemData,
@@ -155,13 +156,13 @@ export default function GemstoneDetailPage({
               </FadeUp>
 
               <FadeUp delay={0.2}>
-                <Link
-                  href="/contact"
+                <button
+                  onClick={openModal}
                   className="inline-flex items-center gap-3 px-8 py-4 bg-primary text-primary-foreground rounded-full font-medium hover:bg-primary/90 transition-all group"
                 >
                   Inquire About {data.name}
                   <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
-                </Link>
+                </button>
               </FadeUp>
             </div>
 

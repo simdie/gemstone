@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Phone, Mail, MapPin, ArrowUpRight } from "lucide-react";
+import { useAppointmentModal } from "@/components/appointment-modal";
 
 const footerLinks = {
   collections: [
@@ -28,6 +29,8 @@ const footerLinks = {
 };
 
 export function Footer() {
+  const { openModal } = useAppointmentModal();
+
   return (
     <footer className="relative overflow-hidden">
       {/* Gradient overlay */}
@@ -50,13 +53,13 @@ export function Footer() {
             Experience the world&apos;s finest natural coloured gemstones.
             Schedule a private consultation with our expert gemologists.
           </p>
-          <Link
-            href="/contact"
+          <button
+            onClick={openModal}
             className="inline-flex items-center gap-2 px-8 py-4 bg-primary text-primary-foreground rounded-full font-medium hover:bg-primary/90 transition-all group"
           >
             Book Your Appointment
             <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
-          </Link>
+          </button>
         </motion.div>
 
         {/* Links grid */}
