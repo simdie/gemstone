@@ -51,6 +51,7 @@ This message was sent from The Glowgem website appointment form.
     const resendApiKey = process.env.RESEND_API_KEY;
     
     if (resendApiKey) {
+      // Send notification to business
       const resendResponse = await fetch("https://api.resend.com/emails", {
         method: "POST",
         headers: {
@@ -64,31 +65,42 @@ This message was sent from The Glowgem website appointment form.
           subject: `New Appointment Request: ${itemInterested} - ${fullName}`,
           text: emailContent,
           html: `
-            <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
-              <h2 style="color: #C5A572; border-bottom: 2px solid #C5A572; padding-bottom: 10px;">
-                New Appointment Request
-              </h2>
-              
-              <div style="background: #f8f8f8; padding: 20px; border-radius: 8px; margin: 20px 0;">
-                <p><strong>Full Name:</strong> ${fullName}</p>
-                <p><strong>Email:</strong> <a href="mailto:${email}">${email}</a></p>
-                <p><strong>Phone:</strong> <a href="tel:${phone}">${phone}</a></p>
-                <p><strong>Country:</strong> ${country}</p>
-                <p><strong>Item of Interest:</strong> ${itemInterested}</p>
-              </div>
-              
-              <div style="margin: 20px 0;">
-                <h3 style="color: #333;">Message:</h3>
-                <p style="background: #fff; padding: 15px; border-left: 4px solid #C5A572; margin: 0;">
-                  ${message.replace(/\n/g, "<br>")}
-                </p>
-              </div>
-              
-              <hr style="border: none; border-top: 1px solid #ddd; margin: 30px 0;">
-              <p style="color: #888; font-size: 12px;">
-                This message was sent from The Glowgem website appointment form.
-              </p>
-            </div>
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"></head>
+<body style="margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #0a0a0f; color: #ffffff;">
+  <div style="max-width: 600px; margin: 0 auto; padding: 40px 20px;">
+    <div style="text-align: center; margin-bottom: 40px;">
+      <h1 style="color: #d4a853; font-size: 24px; margin: 0 0 8px 0;">The Glowgem</h1>
+      <p style="color: #888; font-size: 12px; margin: 0; text-transform: uppercase; letter-spacing: 2px;">Natural Coloured Gemstones</p>
+    </div>
+    <div style="background: linear-gradient(135deg, #1a1a24 0%, #12121a 100%); border-radius: 16px; padding: 32px; border: 1px solid #2a2a3a;">
+      <h2 style="color: #d4a853; font-size: 20px; margin: 0 0 24px 0;">New Appointment Request</h2>
+      <div style="margin-bottom: 24px;">
+        <h3 style="color: #888; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; margin: 0 0 16px 0;">Client Details</h3>
+        <table style="width: 100%; border-collapse: collapse;">
+          <tr><td style="padding: 8px 0; color: #888; width: 120px;">Name</td><td style="padding: 8px 0; color: #fff; font-weight: 500;">${fullName}</td></tr>
+          <tr><td style="padding: 8px 0; color: #888;">Email</td><td style="padding: 8px 0;"><a href="mailto:${email}" style="color: #d4a853;">${email}</a></td></tr>
+          <tr><td style="padding: 8px 0; color: #888;">Phone</td><td style="padding: 8px 0;"><a href="tel:${phone}" style="color: #d4a853;">${phone}</a></td></tr>
+          <tr><td style="padding: 8px 0; color: #888;">Country</td><td style="padding: 8px 0; color: #fff;">${country}</td></tr>
+        </table>
+      </div>
+      <div style="margin-bottom: 24px; padding-top: 24px; border-top: 1px solid #2a2a3a;">
+        <h3 style="color: #888; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; margin: 0 0 16px 0;">Interest</h3>
+        <div style="background: #d4a853; color: #0a0a0f; display: inline-block; padding: 8px 16px; border-radius: 20px; font-size: 14px; font-weight: 600;">${itemInterested}</div>
+      </div>
+      <div style="padding-top: 24px; border-top: 1px solid #2a2a3a;">
+        <h3 style="color: #888; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; margin: 0 0 16px 0;">Message</h3>
+        <p style="color: #ccc; line-height: 1.6; margin: 0; white-space: pre-wrap;">${message}</p>
+      </div>
+    </div>
+    <div style="text-align: center; margin-top: 32px;">
+      <a href="mailto:${email}?subject=Re: Appointment Request - The Glowgem" style="display: inline-block; background: #d4a853; color: #0a0a0f; text-decoration: none; padding: 14px 32px; border-radius: 25px; font-weight: 600;">Reply to Client</a>
+    </div>
+    <p style="text-align: center; color: #666; font-size: 12px; margin-top: 32px;">Please respond within 24 hours.</p>
+  </div>
+</body>
+</html>
           `,
         }),
       });
@@ -98,6 +110,44 @@ This message was sent from The Glowgem website appointment form.
         console.error("Resend error:", errorData);
         throw new Error("Failed to send email via Resend");
       }
+
+      // Send confirmation email to customer
+      await fetch("https://api.resend.com/emails", {
+        method: "POST",
+        headers: {
+          "Authorization": `Bearer ${resendApiKey}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          from: "The Glowgem <noreply@theglowgem.com>",
+          to: [email],
+          subject: "Appointment Request Received - The Glowgem",
+          html: `
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"></head>
+<body style="margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #0a0a0f; color: #ffffff;">
+  <div style="max-width: 600px; margin: 0 auto; padding: 40px 20px;">
+    <div style="text-align: center; margin-bottom: 40px;">
+      <h1 style="color: #d4a853; font-size: 24px; margin: 0 0 8px 0;">The Glowgem</h1>
+      <p style="color: #888; font-size: 12px; margin: 0; text-transform: uppercase; letter-spacing: 2px;">Natural Coloured Gemstones</p>
+    </div>
+    <div style="background: linear-gradient(135deg, #1a1a24 0%, #12121a 100%); border-radius: 16px; padding: 32px; border: 1px solid #2a2a3a;">
+      <h2 style="color: #fff; font-size: 20px; margin: 0 0 16px 0;">Thank You, ${fullName}</h2>
+      <p style="color: #ccc; line-height: 1.6; margin: 0 0 24px 0;">We have received your appointment request for <strong style="color: #d4a853;">${itemInterested}</strong>. Our team will review your inquiry and respond within 24 hours.</p>
+      <div style="background: #0a0a0f; border-radius: 12px; padding: 20px; margin-bottom: 24px;">
+        <p style="color: #888; font-size: 12px; margin: 0 0 8px 0; text-transform: uppercase;">Your Message</p>
+        <p style="color: #ccc; font-size: 14px; margin: 0; line-height: 1.5;">${message}</p>
+      </div>
+      <p style="color: #888; font-size: 14px; margin: 0;">For urgent inquiries: <a href="tel:+447403824831" style="color: #d4a853;">+44 740 382 4831</a></p>
+    </div>
+    <p style="text-align: center; color: #666; font-size: 12px; margin-top: 32px;">30+ Years of Excellence in Natural Coloured Gemstones<br><span style="color: #444;">theglowgem.com</span></p>
+  </div>
+</body>
+</html>
+          `,
+        }),
+      });
     } else {
       // Fallback: Log the appointment request
       // In production, you should configure an email service
