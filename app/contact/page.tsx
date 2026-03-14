@@ -380,7 +380,7 @@ export default function ContactPage() {
           <FadeUp>
             <div className="relative aspect-[3/1] rounded-3xl overflow-hidden">
               <Image
-                src="/assets/images/contact/jewelleryy.png"
+                src="/images/contact/showroom.jpg"
                 alt="The Glowgem showroom"
                 fill
                 className="object-cover"
