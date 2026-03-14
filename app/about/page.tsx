@@ -128,6 +128,7 @@ export default function AboutPage() {
                     fill
                     className="object-cover"
                     priority
+                    unoptimized
                   />
                 </div>
               </GradientBorder>
@@ -251,6 +252,7 @@ export default function AboutPage() {
                         alt={member.name}
                         fill
                         className="object-cover transition-transform duration-500 group-hover:scale-105"
+                        unoptimized
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
                     </div>
