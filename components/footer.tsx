@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { Phone, Mail, MapPin, ArrowUpRight } from "lucide-react";
 import { useAppointmentModal } from "@/components/appointment-modal";
@@ -67,10 +68,13 @@ export function Footer() {
           {/* Brand column */}
           <div className="lg:col-span-2">
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-amber-400 flex items-center justify-center">
-                <span className="text-primary-foreground font-serif font-bold text-xl">
-                  G
-                </span>
+              <div className="relative w-14 h-14 shrink-0">
+                <Image
+                  src="/images/logo.png"
+                  alt="The Glowgem Logo"
+                  fill
+                  className="object-contain"
+                />
               </div>
               <div>
                 <h3 className="font-serif text-xl font-semibold">

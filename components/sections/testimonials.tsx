@@ -10,7 +10,7 @@ const testimonials = [
   {
     name: "Victoria Hamilton",
     role: "Private Collector",
-    image: "/assets/images/about/bella.png",
+    image: "/images/testimonials/victoria-hamilton.jpg",
     content:
       "The Glowgem's expertise in natural coloured gemstones is unparalleled. The 5-carat Kashmir sapphire they sourced for my collection exceeded all expectations.",
     rating: 5,
@@ -18,7 +18,7 @@ const testimonials = [
   {
     name: "Marcus Rothschild",
     role: "Investment Advisor",
-    image: "/assets/images/about/nicolas.png",
+    image: "/images/testimonials/marcus-rothschild.jpg",
     content:
       "For over a decade, I've relied on The Glowgem for investment-grade gemstones. Their certification and provenance documentation is impeccable.",
     rating: 5,
@@ -26,7 +26,7 @@ const testimonials = [
   {
     name: "Elizabeth Crawford",
     role: "Jewellery Designer",
-    image: "/assets/images/about/alex.png",
+    image: "/images/testimonials/elizabeth-crawford.jpg",
     content:
       "As a designer, quality is everything. The Glowgem consistently provides the most exceptional stones that bring my creations to life.",
     rating: 5,
@@ -34,7 +34,7 @@ const testimonials = [
   {
     name: "James Wellington",
     role: "Estate Buyer",
-    image: "/assets/images/about/phillip.png",
+    image: "/images/testimonials/james-wellington.jpg",
     content:
       "Their knowledge of the gemstone market and ethical sourcing practices make them my first choice for acquiring exceptional pieces.",
     rating: 5,
