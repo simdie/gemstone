@@ -12,14 +12,14 @@ const contactInfo = [
   {
     icon: Phone,
     label: "Phone",
-    value: "+44 740 382 4832",
-    href: "tel:+447403824832",
+    value: "+44 740 382 4831",
+    href: "tel:+447403824831",
   },
   {
     icon: Mail,
     label: "Email",
-    value: "support@glengemstone.com",
-    href: "mailto:support@glengemstone.com",
+    value: "support@theglowgem.com",
+    href: "mailto:support@theglowgem.com",
   },
   {
     icon: MapPin,
@@ -64,14 +64,40 @@ export default function ContactPage() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [error, setError] = useState("");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-    setIsSubmitting(false);
-    setIsSubmitted(true);
+    setError("");
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          fullName: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          itemInterested: formData.reason,
+          message: formData.message,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || "Failed to send message");
+      }
+
+      setIsSubmitted(true);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Something went wrong. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -332,11 +358,11 @@ export default function ContactPage() {
                     Our team is available to discuss your requirements directly.
                   </p>
                   <a
-                    href="tel:+447403824832"
+                    href="tel:+447403824831"
                     className="inline-flex items-center gap-2 text-primary hover:underline"
                   >
                     <Phone className="w-4 h-4" />
-                    +44 740 382 4832
+                    +44 740 382 4831
                   </a>
                 </div>
               </FadeUp>
@@ -367,7 +393,7 @@ export default function ContactPage() {
                     by appointment in London.
                   </p>
                   <a
-                    href="tel:+447403824832"
+                    href="tel:+447403824831"
                     className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-full font-medium hover:bg-primary/90 transition-colors"
                   >
                     Schedule Visit

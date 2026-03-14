@@ -13,12 +13,13 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Glen Gemstone | Expert in Natural Coloured Gemstones",
+  title: "The Glowgem | Expert in Natural Coloured Gemstones",
   description:
     "30 years of experience in the international gemstone trade. Certified natural gemstones & crystals from around the world.",
   keywords:
-    "Glen Gemstone, Coloured Gemstones, Natural Gemstones, Gemstone Trade, Crystals, Gemstone Certification",
-  authors: [{ name: "Glen Gemstone" }],
+    "The Glowgem, Coloured Gemstones, Natural Gemstones, Gemstone Trade, Crystals, Gemstone Certification",
+  authors: [{ name: "The Glowgem" }],
+  metadataBase: new URL("https://theglowgem.com"),
 };
 
 export const viewport: Viewport = {

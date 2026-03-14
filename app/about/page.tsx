@@ -10,27 +10,27 @@ import { FadeUp, StaggerContainer, StaggerItem, AnimatedCounter, GradientBorder,
 
 const team = [
   {
-    name: "Glenn Richard Arsher",
+    name: "Gudbrand Sigurd",
     role: "CEO & Founder",
-    image: "/assets/images/about/richard.png",
+    image: "/images/sigurd2.png",
     bio: "Over 30 years of expertise in natural coloured gemstones. Doctorate in economics and certifications from leading gemological institutes worldwide.",
   },
   {
     name: "Alexander Petrov",
     role: "Head Gemologist",
-    image: "/assets/images/about/alex.png",
+    image: "/images/team/alex.jpg",
     bio: "Former GIA instructor with expertise in ruby and sapphire evaluation. 20+ years of field experience in Myanmar and Sri Lanka.",
   },
   {
     name: "Isabella Romano",
     role: "Collections Director",
-    image: "/assets/images/about/bella.png",
+    image: "/images/team/isabella.jpg",
     bio: "Specialist in rare and investment-grade gemstones. Previously managed acquisitions for major auction houses.",
   },
   {
     name: "Nicolas Fontaine",
     role: "Client Relations",
-    image: "/assets/images/about/nicolas.png",
+    image: "/images/team/nicolas.jpg",
     bio: "Luxury goods specialist dedicated to providing exceptional client experiences and personalized consultations.",
   },
 ];
@@ -59,7 +59,7 @@ const values = [
 ];
 
 const milestones = [
-  { year: "1994", event: "Glen Gemstone founded in London" },
+  { year: "1994", event: "The Glowgem founded in London" },
   { year: "2001", event: "Established partnerships with Myanmar mines" },
   { year: "2008", event: "Launched investment-grade gemstone division" },
   { year: "2015", event: "Published 'Investing in Gemstones' bestseller" },
@@ -120,8 +120,8 @@ export default function AboutPage() {
               <GradientBorder>
                 <div className="relative aspect-[4/5] overflow-hidden rounded-2xl">
                   <Image
-                    src="/assets/images/about/richard.png"
-                    alt="Glenn Richard Arsher - CEO"
+                    src="/images/sigurd.png"
+                    alt="Gudbrand Sigurd - CEO"
                     fill
                     className="object-cover"
                     priority
@@ -164,7 +164,7 @@ export default function AboutPage() {
             <FadeUp delay={0.2}>
               <div className="prose prose-lg prose-invert max-w-none">
                 <p className="text-muted-foreground leading-relaxed mb-6">
-                  Founded in 1994 by Glenn Richard Arsher, Glen Gemstone began
+                  Founded in 1994 by Gudbrand Sigurd, The Glowgem began
                   as a passion project rooted in a deep fascination with natural
                   coloured gemstones. What started as a small operation sourcing
                   exceptional specimens has grown into one of Europe&apos;s leading
@@ -179,7 +179,7 @@ export default function AboutPage() {
                   collectors and investors alike.
                 </p>
                 <p className="text-muted-foreground leading-relaxed">
-                  Today, Glen Gemstone continues to uphold the highest standards
+                  Today, The Glowgem continues to uphold the highest standards
                   of excellence, offering by-appointment consultations to
                   discerning clients who appreciate the rare beauty and enduring
                   value of natural gemstones.
