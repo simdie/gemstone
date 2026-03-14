@@ -6,7 +6,9 @@ import { X, Send, Loader2, CheckCircle, ArrowRight, Calendar, ChevronDown, Check
 
 interface AppointmentModalContextType {
   isOpen: boolean;
+  prefilledItem: string;
   openModal: () => void;
+  openModalWithItem: (item: string) => void;
   closeModal: () => void;
 }
 
@@ -26,12 +28,20 @@ interface AppointmentModalProviderProps {
 
 export function AppointmentModalProvider({ children }: AppointmentModalProviderProps) {
   const [isOpen, setIsOpen] = useState(false);
+  const [prefilledItem, setPrefilledItem] = useState("");
 
   const openModal = () => setIsOpen(true);
-  const closeModal = () => setIsOpen(false);
+  const openModalWithItem = (item: string) => {
+    setPrefilledItem(item);
+    setIsOpen(true);
+  };
+  const closeModal = () => {
+    setIsOpen(false);
+    setPrefilledItem("");
+  };
 
   return (
-    <AppointmentModalContext.Provider value={{ isOpen, openModal, closeModal }}>
+    <AppointmentModalContext.Provider value={{ isOpen, prefilledItem, openModal, openModalWithItem, closeModal }}>
       {children}
       <AppointmentModal />
     </AppointmentModalContext.Provider>
@@ -161,7 +171,7 @@ function CustomDropdown({ value, onChange, options, placeholder, required }: Cus
 }
 
 function AppointmentModal() {
-  const { isOpen, closeModal } = useAppointmentModal();
+  const { isOpen, prefilledItem, closeModal } = useAppointmentModal();
   const [formData, setFormData] = useState({
     fullName: "",
     itemInterested: "",
@@ -170,6 +180,13 @@ function AppointmentModal() {
     phone: "",
     message: "",
   });
+
+  // Update item when prefilled item changes
+  useEffect(() => {
+    if (prefilledItem) {
+      setFormData(prev => ({ ...prev, itemInterested: prefilledItem }));
+    }
+  }, [prefilledItem]);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [error, setError] = useState<string | null>(null);

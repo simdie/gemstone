@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
-import { Star, SlidersHorizontal, MessageCircle } from "lucide-react";
+import { Star, SlidersHorizontal, MessageCircle, Gem } from "lucide-react";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { FadeUp, StaggerContainer, StaggerItem, ScaleHover } from "@/components/motion";
@@ -19,6 +19,7 @@ const looseGems = [
     image: "/images/featured/burma-ruby.jpg",
     rating: 5,
     certified: true,
+    description: "Pigeon blood red color, exceptional clarity",
   },
   {
     id: 2,
@@ -29,6 +30,7 @@ const looseGems = [
     image: "/images/featured/kashmir-sapphire.jpg",
     rating: 5,
     certified: true,
+    description: "Velvety cornflower blue, museum quality",
   },
   {
     id: 3,
@@ -39,6 +41,7 @@ const looseGems = [
     image: "/images/featured/colombian-emerald.jpg",
     rating: 5,
     certified: true,
+    description: "Vivid green with excellent transparency",
   },
   {
     id: 4,
@@ -49,6 +52,7 @@ const looseGems = [
     image: "/images/collections/turquoise.jpg",
     rating: 5,
     certified: true,
+    description: "Robin egg blue, no matrix",
   },
   {
     id: 5,
@@ -59,6 +63,7 @@ const looseGems = [
     image: "/images/collections/topaz.jpg",
     rating: 5,
     certified: true,
+    description: "Golden orange with pink undertones",
   },
   {
     id: 6,
@@ -69,6 +74,7 @@ const looseGems = [
     image: "/images/collections/carnelian.jpg",
     rating: 5,
     certified: true,
+    description: "Deep orange-red, translucent",
   },
   {
     id: 7,
@@ -79,6 +85,7 @@ const looseGems = [
     image: "/images/gems/alexandrite.jpg",
     rating: 5,
     certified: true,
+    description: "Strong color change, emerald to raspberry",
   },
   {
     id: 8,
@@ -89,6 +96,7 @@ const looseGems = [
     image: "/images/gems/amethyst.jpg",
     rating: 5,
     certified: true,
+    description: "Deep purple with flashes of red",
   },
   {
     id: 9,
@@ -99,6 +107,7 @@ const looseGems = [
     image: "/images/gems/aquamarine.jpg",
     rating: 5,
     certified: true,
+    description: "Santa Maria blue, eye clean",
   },
   {
     id: 10,
@@ -109,6 +118,7 @@ const looseGems = [
     image: "/images/gems/citrine.jpg",
     rating: 5,
     certified: true,
+    description: "Deep amber orange, naturally heated",
   },
   {
     id: 11,
@@ -119,6 +129,7 @@ const looseGems = [
     image: "/images/gems/garnet.jpg",
     rating: 5,
     certified: true,
+    description: "Rich burgundy red, exceptional fire",
   },
   {
     id: 12,
@@ -129,16 +140,18 @@ const looseGems = [
     image: "/images/gems/morganite.jpg",
     rating: 5,
     certified: true,
+    description: "Delicate peach pink, flawless",
   },
   {
     id: 13,
-    name: "Australian Opal",
+    name: "Australian Black Opal",
     type: "Opal",
     weight: "6.78 ct",
     origin: "Australia",
     image: "/images/gems/opal.jpg",
     rating: 5,
     certified: true,
+    description: "Brilliant play of color on dark body",
   },
   {
     id: 14,
@@ -149,6 +162,7 @@ const looseGems = [
     image: "/images/gems/paraiba.jpg",
     rating: 5,
     certified: true,
+    description: "Electric neon blue-green, copper bearing",
   },
   {
     id: 15,
@@ -159,16 +173,18 @@ const looseGems = [
     image: "/images/gems/peridot.jpg",
     rating: 5,
     certified: true,
+    description: "Vivid lime green, excellent clarity",
   },
   {
     id: 16,
-    name: "Burmese Spinel",
+    name: "Burmese Red Spinel",
     type: "Spinel",
     weight: "3.67 ct",
     origin: "Myanmar",
     image: "/images/gems/spinel.jpg",
     rating: 5,
     certified: true,
+    description: "Vivid pinkish-red, unheated",
   },
   {
     id: 17,
@@ -179,6 +195,7 @@ const looseGems = [
     image: "/images/gems/tanzanite.jpg",
     rating: 5,
     certified: true,
+    description: "Intense violet-blue, exceptional saturation",
   },
   {
     id: 18,
@@ -189,16 +206,18 @@ const looseGems = [
     image: "/images/gems/tourmaline.jpg",
     rating: 5,
     certified: true,
+    description: "Chrome green, remarkably clear",
   },
   {
     id: 19,
-    name: "Cambodian Zircon",
+    name: "Cambodian Blue Zircon",
     type: "Zircon",
     weight: "4.12 ct",
     origin: "Cambodia",
     image: "/images/gems/zircon.jpg",
     rating: 5,
     certified: true,
+    description: "Electric blue with diamond-like fire",
   },
   {
     id: 20,
@@ -209,100 +228,112 @@ const looseGems = [
     image: "/images/gems/kunzite.jpg",
     rating: 5,
     certified: true,
+    description: "Soft lilac pink, large clean crystal",
+  },
+  {
+    id: 21,
+    name: "Imperial Jade",
+    type: "Jade",
+    weight: "3.45 ct",
+    origin: "Myanmar",
+    image: "/images/gems/jade.jpg",
+    rating: 5,
+    certified: true,
+    description: "Vivid green, highly translucent",
+  },
+  {
+    id: 22,
+    name: "Afghan Lapis Lazuli",
+    type: "Lapis Lazuli",
+    weight: "8.90 ct",
+    origin: "Afghanistan",
+    image: "/images/gems/lapis.jpg",
+    rating: 5,
+    certified: true,
+    description: "Deep royal blue with golden pyrite",
+  },
+  {
+    id: 23,
+    name: "Sri Lankan Moonstone",
+    type: "Moonstone",
+    weight: "5.67 ct",
+    origin: "Sri Lanka",
+    image: "/images/gems/moonstone.jpg",
+    rating: 5,
+    certified: true,
+    description: "Blue adularescence, transparent body",
+  },
+  {
+    id: 24,
+    name: "Tsavorite Garnet",
+    type: "Tsavorite",
+    weight: "2.89 ct",
+    origin: "Kenya",
+    image: "/images/gems/tsavorite.jpg",
+    rating: 5,
+    certified: true,
+    description: "Vivid green, rival to emerald",
+  },
+  {
+    id: 25,
+    name: "Rhodolite Garnet",
+    type: "Rhodolite",
+    weight: "6.12 ct",
+    origin: "Tanzania",
+    image: "/images/gems/rhodolite.jpg",
+    rating: 5,
+    certified: true,
+    description: "Raspberry pink-purple, excellent clarity",
+  },
+  {
+    id: 26,
+    name: "Oregon Sunstone",
+    type: "Sunstone",
+    weight: "4.78 ct",
+    origin: "USA",
+    image: "/images/gems/sunstone.jpg",
+    rating: 5,
+    certified: true,
+    description: "Golden schiller, copper inclusions",
   },
 ];
 
-const jewelleryItems = [
-  {
-    id: 101,
-    name: "Diamond Tennis Bracelet",
-    type: "Bracelet",
-    weight: "8.50 ct total",
-    origin: "18K Gold & Diamonds",
-    image: "/images/jewellery/bracelets/gold-diamond-tennis.jpg",
-    rating: 5,
-    certified: true,
-  },
-  {
-    id: 102,
-    name: "Ruby Halo Ring",
-    type: "Ring",
-    weight: "2.85 ct center",
-    origin: "Burmese Ruby",
-    image: "/images/jewellery/rings/ruby-halo.jpg",
-    rating: 5,
-    certified: true,
-  },
-  {
-    id: 103,
-    name: "Emerald Drop Earrings",
-    type: "Earrings",
-    weight: "3.20 ct total",
-    origin: "Colombian Emerald",
-    image: "/images/jewellery/earrings/emerald-drop.jpg",
-    rating: 5,
-    certified: true,
-  },
-  {
-    id: 104,
-    name: "Diamond Riviera Necklace",
-    type: "Necklace",
-    weight: "15.00 ct total",
-    origin: "18K White Gold",
-    image: "/images/jewellery/necklaces/diamond-riviera.jpg",
-    rating: 5,
-    certified: true,
-  },
-  {
-    id: 105,
-    name: "Diamond Butterfly Brooch",
-    type: "Brooch",
-    weight: "4.50 ct total",
-    origin: "Platinum & Diamonds",
-    image: "/images/jewellery/brooches/diamond-butterfly.jpg",
-    rating: 5,
-    certified: true,
-  },
-  {
-    id: 106,
-    name: "Diamond Dress Watch",
-    type: "Timepiece",
-    weight: "2.00 ct bezel",
-    origin: "18K White Gold",
-    image: "/images/jewellery/timepieces/diamond-dress-watch.jpg",
-    rating: 5,
-    certified: true,
-  },
+const gemTypes = [
+  "All",
+  "Ruby",
+  "Sapphire",
+  "Emerald",
+  "Turquoise",
+  "Topaz",
+  "Carnelian",
+  "Alexandrite",
+  "Amethyst",
+  "Aquamarine",
+  "Citrine",
+  "Garnet",
+  "Morganite",
+  "Opal",
+  "Tourmaline",
+  "Peridot",
+  "Spinel",
+  "Tanzanite",
+  "Zircon",
+  "Kunzite",
+  "Jade",
+  "Moonstone",
 ];
 
-const allProducts = [
-  ...looseGems.map(g => ({ ...g, category: "loose" })),
-  ...jewelleryItems.map(j => ({ ...j, category: "jewellery" })),
-];
-
-const categories = [
-  { id: "all", name: "All Products" },
-  { id: "loose", name: "Loose Gems" },
-  { id: "jewellery", name: "Jewellery" },
-];
-
-const types = ["All", "Ruby", "Sapphire", "Emerald", "Turquoise", "Topaz", "Carnelian", "Alexandrite", "Amethyst", "Aquamarine", "Tourmaline", "Tanzanite", "Bracelet", "Ring", "Earrings", "Necklace", "Brooch", "Timepiece"];
-
-export default function ProductsPage() {
-  const [selectedCategory, setSelectedCategory] = useState("all");
+export default function LooseGemsPage() {
   const [selectedType, setSelectedType] = useState("All");
   const [showFilters, setShowFilters] = useState(false);
   const { openModalWithItem } = useAppointmentModal();
 
-  const filteredProducts = allProducts.filter((product) => {
-    const categoryMatch =
-      selectedCategory === "all" || product.category === selectedCategory;
-    const typeMatch = selectedType === "All" || product.type === selectedType;
-    return categoryMatch && typeMatch;
+  const filteredGems = looseGems.filter((gem) => {
+    return selectedType === "All" || gem.type === selectedType;
   });
 
-  const handleMessageForPrice = (productName: string) => {
-    openModalWithItem(productName);
+  const handleMessageForPrice = (gemName: string) => {
+    openModalWithItem(gemName);
   };
 
   return (
@@ -314,15 +345,17 @@ export default function ProductsPage() {
         <div className="absolute inset-0 bg-gradient-to-b from-secondary/30 to-background" />
         <div className="relative container mx-auto px-6 text-center">
           <FadeUp>
-            <span className="text-primary text-sm font-medium tracking-widest uppercase mb-4 block">
-              Our Products
-            </span>
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass mb-6">
+              <Gem className="w-4 h-4 text-primary" />
+              <span className="text-sm text-muted-foreground">Investment Grade Specimens</span>
+            </div>
             <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl mb-6">
-              Exceptional <span className="gradient-text">Specimens</span>
+              Loose <span className="gradient-text">Gemstones</span>
             </h1>
             <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
-              Explore our collection of investment-grade loose gemstones and
-              exquisite jewellery pieces, each certified for authenticity.
+              Discover our exceptional collection of certified natural gemstones, 
+              sourced from the world&apos;s most prestigious origins and hand-selected 
+              for quality and beauty.
             </p>
           </FadeUp>
         </div>
@@ -331,31 +364,16 @@ export default function ProductsPage() {
       {/* Filters */}
       <section className="py-8 border-b border-border/50">
         <div className="container mx-auto px-6">
-          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
-            {/* Category tabs */}
-            <div className="flex flex-wrap gap-2">
-              {categories.map((category) => (
-                <button
-                  key={category.id}
-                  onClick={() => setSelectedCategory(category.id)}
-                  className={`px-6 py-2.5 rounded-full text-sm font-medium transition-all ${
-                    selectedCategory === category.id
-                      ? "bg-primary text-primary-foreground"
-                      : "glass hover:bg-secondary/50"
-                  }`}
-                >
-                  {category.name}
-                </button>
-              ))}
-            </div>
-
-            {/* Filter toggle */}
+          <div className="flex items-center justify-between">
+            <p className="text-muted-foreground">
+              {filteredGems.length} gemstones available
+            </p>
             <button
               onClick={() => setShowFilters(!showFilters)}
               className="inline-flex items-center gap-2 px-4 py-2 glass rounded-full text-sm hover:bg-secondary/50 transition-colors"
             >
               <SlidersHorizontal className="w-4 h-4" />
-              Filters
+              Filter by Type
             </button>
           </div>
 
@@ -370,7 +388,7 @@ export default function ProductsPage() {
               >
                 <div className="pt-6">
                   <div className="flex flex-wrap gap-2">
-                    {types.map((type) => (
+                    {gemTypes.map((type) => (
                       <button
                         key={type}
                         onClick={() => setSelectedType(type)}
@@ -391,32 +409,28 @@ export default function ProductsPage() {
         </div>
       </section>
 
-      {/* Products grid */}
+      {/* Gems grid */}
       <section className="py-20">
         <div className="container mx-auto px-6">
-          <div className="mb-8 text-muted-foreground">
-            Showing {filteredProducts.length} products
-          </div>
-
-          <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {filteredProducts.map((product) => (
-              <StaggerItem key={product.id}>
+          <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            {filteredGems.map((gem) => (
+              <StaggerItem key={gem.id}>
                 <ScaleHover>
-                  <div className="group cursor-pointer" onClick={() => handleMessageForPrice(product.name)}>
-                    <div className="glass rounded-3xl overflow-hidden">
+                  <div className="group cursor-pointer" onClick={() => handleMessageForPrice(gem.name)}>
+                    <div className="glass rounded-3xl overflow-hidden h-full">
                       {/* Image */}
                       <div className="relative aspect-square overflow-hidden">
                         <Image
-                          src={product.image}
-                          alt={product.name}
+                          src={gem.image}
+                          alt={gem.name}
                           fill
                           className="object-cover transition-transform duration-700 group-hover:scale-110"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-card/80 via-transparent to-transparent" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-card/90 via-card/20 to-transparent" />
 
                         {/* Badges */}
                         <div className="absolute top-4 left-4 flex gap-2">
-                          {product.certified && (
+                          {gem.certified && (
                             <span className="px-3 py-1 rounded-full bg-primary/20 text-primary text-xs font-medium backdrop-blur-sm">
                               Certified
                             </span>
@@ -425,12 +439,17 @@ export default function ProductsPage() {
 
                         {/* Rating */}
                         <div className="absolute top-4 right-4 flex gap-0.5">
-                          {[...Array(product.rating)].map((_, i) => (
+                          {[...Array(gem.rating)].map((_, i) => (
                             <Star
                               key={i}
-                              className="w-4 h-4 fill-primary text-primary"
+                              className="w-3 h-3 fill-primary text-primary"
                             />
                           ))}
+                        </div>
+
+                        {/* Quick info overlay */}
+                        <div className="absolute bottom-4 left-4 right-4">
+                          <p className="text-xs text-foreground/80">{gem.description}</p>
                         </div>
                       </div>
 
@@ -438,18 +457,18 @@ export default function ProductsPage() {
                       <div className="p-5">
                         <div className="mb-3">
                           <h3 className="font-serif text-lg group-hover:text-primary transition-colors">
-                            {product.name}
+                            {gem.name}
                           </h3>
                           <p className="text-sm text-muted-foreground">
-                            {product.origin}
+                            {gem.origin}
                           </p>
                         </div>
                         <div className="flex items-center justify-between mb-4">
-                          <span className="text-sm text-muted-foreground capitalize">
-                            {product.type}
+                          <span className="text-xs px-2 py-1 rounded-full bg-secondary/50 text-muted-foreground">
+                            {gem.type}
                           </span>
                           <span className="text-sm font-medium text-primary">
-                            {product.weight}
+                            {gem.weight}
                           </span>
                         </div>
                         
@@ -457,7 +476,7 @@ export default function ProductsPage() {
                         <button
                           onClick={(e) => {
                             e.stopPropagation();
-                            handleMessageForPrice(product.name);
+                            handleMessageForPrice(gem.name);
                           }}
                           className="w-full flex items-center justify-center gap-2 py-3 rounded-full bg-primary/10 text-primary hover:bg-primary hover:text-primary-foreground transition-all text-sm font-medium"
                         >
@@ -472,46 +491,60 @@ export default function ProductsPage() {
             ))}
           </StaggerContainer>
 
-          {filteredProducts.length === 0 && (
+          {filteredGems.length === 0 && (
             <div className="text-center py-20">
               <p className="text-muted-foreground">
-                No products match your current filters.
+                No gemstones match your current filter.
               </p>
               <button
-                onClick={() => {
-                  setSelectedCategory("all");
-                  setSelectedType("All");
-                }}
+                onClick={() => setSelectedType("All")}
                 className="mt-4 text-primary hover:underline"
               >
-                Clear all filters
+                Clear filter
               </button>
             </div>
           )}
         </div>
       </section>
 
-      {/* CTA */}
+      {/* Info section */}
       <section className="py-20 bg-secondary/20">
-        <div className="container mx-auto px-6 text-center">
-          <FadeUp>
-            <h2 className="font-serif text-3xl md:text-4xl mb-6">
-              Looking for Something{" "}
-              <span className="gradient-text">Specific?</span>
-            </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto mb-8">
-              We specialize in sourcing rare and exceptional gemstones. Contact
-              us with your requirements and our experts will find the perfect
-              piece for your collection.
-            </p>
-            <button
-              onClick={() => openModalWithItem("Custom Request")}
-              className="inline-flex items-center gap-2 px-8 py-4 bg-primary text-primary-foreground rounded-full font-medium hover:bg-primary/90 transition-colors"
-            >
-              <MessageCircle className="w-5 h-5" />
-              Contact Us
-            </button>
-          </FadeUp>
+        <div className="container mx-auto px-6">
+          <div className="grid md:grid-cols-3 gap-8">
+            <FadeUp>
+              <div className="text-center">
+                <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
+                  <Gem className="w-8 h-8 text-primary" />
+                </div>
+                <h3 className="font-serif text-xl mb-2">100% Natural</h3>
+                <p className="text-muted-foreground text-sm">
+                  All our gemstones are natural, untreated specimens certified by leading laboratories.
+                </p>
+              </div>
+            </FadeUp>
+            <FadeUp>
+              <div className="text-center">
+                <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
+                  <Star className="w-8 h-8 text-primary" />
+                </div>
+                <h3 className="font-serif text-xl mb-2">Investment Grade</h3>
+                <p className="text-muted-foreground text-sm">
+                  Each stone is hand-selected for exceptional quality, color, and clarity.
+                </p>
+              </div>
+            </FadeUp>
+            <FadeUp>
+              <div className="text-center">
+                <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
+                  <MessageCircle className="w-8 h-8 text-primary" />
+                </div>
+                <h3 className="font-serif text-xl mb-2">Expert Guidance</h3>
+                <p className="text-muted-foreground text-sm">
+                  Our gemologists provide personalized consultations for every purchase.
+                </p>
+              </div>
+            </FadeUp>
+          </div>
         </div>
       </section>
 
