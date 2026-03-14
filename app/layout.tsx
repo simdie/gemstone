@@ -21,9 +21,9 @@ export const metadata: Metadata = {
     "The Glowgem, Coloured Gemstones, Natural Gemstones, Gemstone Trade, Crystals, Gemstone Certification",
   authors: [{ name: "The Glowgem" }],
   icons: {
-    icon: "/favicon.ico",
-    shortcut: "/favicon.ico",
-    apple: "/images/logo.png",
+    icon: "/icon.jpg",
+    shortcut: "/icon.jpg",
+    apple: "/icon.jpg",
   },
 };
 
