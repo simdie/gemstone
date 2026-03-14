@@ -39,6 +39,7 @@ export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const [mobileOpenDropdown, setMobileOpenDropdown] = useState<string | null>(null);
   const { openModal } = useAppointmentModal();
 
   useEffect(() => {
@@ -206,12 +207,12 @@ export function Header() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 top-0 z-40 lg:hidden bg-background/95 backdrop-blur-lg overflow-y-auto"
+            className="fixed inset-0 z-[60] lg:hidden bg-background overflow-y-auto"
           >
             {/* Mobile menu header */}
-            <div className="flex items-center justify-between px-6 py-4 border-b border-border/30">
+            <div className="sticky top-0 z-10 flex items-center justify-between px-6 py-4 bg-background border-b border-border/30">
               <Link href="/" onClick={() => setIsMobileMenuOpen(false)} className="flex items-center gap-3">
-                <div className="relative w-12 h-12 shrink-0">
+                <div className="relative w-10 h-10 shrink-0">
                   <Image
                     src="/images/logo.png"
                     alt="The Glowgem Logo"
@@ -223,41 +224,73 @@ export function Header() {
               </Link>
               <button
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="p-2 hover:bg-secondary rounded-lg transition-colors border border-border/50"
+                className="w-10 h-10 flex items-center justify-center rounded-full bg-secondary hover:bg-secondary/80 transition-colors"
                 aria-label="Close menu"
               >
-                <X className="w-6 h-6" />
+                <X className="w-5 h-5" />
               </button>
             </div>
 
-            <nav className="px-6 py-8">
-              <div className="flex flex-col gap-1">
+            <nav className="px-6 py-6">
+              <div className="flex flex-col">
                 {navigation.map((item) => (
-                  <div key={item.name} className="border-b border-border/20 last:border-b-0">
-                    <Link
-                      href={item.href}
-                      onClick={() => setIsMobileMenuOpen(false)}
-                      className="flex items-center justify-between py-4 text-lg font-medium hover:text-primary transition-colors"
-                    >
-                      {item.name}
-                      {item.children && (
-                        <ChevronDown className="w-5 h-5 text-muted-foreground" />
-                      )}
-                    </Link>
-                    {item.children && (
-                      <div className="pl-4 pb-4 space-y-1">
-                        {item.children.map((child) => (
-                          <Link
-                            key={child.name}
-                            href={child.href}
-                            onClick={() => setIsMobileMenuOpen(false)}
-                            className="flex items-center gap-2 py-2.5 text-muted-foreground hover:text-primary transition-colors"
+                  <div key={item.name} className="border-b border-border/20">
+                    {item.children ? (
+                      <>
+                        <button
+                          onClick={() => setMobileOpenDropdown(mobileOpenDropdown === item.name ? null : item.name)}
+                          className="flex items-center justify-between w-full py-4 text-lg font-medium hover:text-primary transition-colors"
+                        >
+                          <span className={mobileOpenDropdown === item.name ? "text-primary" : ""}>
+                            {item.name}
+                          </span>
+                          <motion.div
+                            animate={{ rotate: mobileOpenDropdown === item.name ? 180 : 0 }}
+                            transition={{ duration: 0.2 }}
                           >
-                            <span className="w-1.5 h-1.5 rounded-full bg-primary/50" />
-                            {child.name}
-                          </Link>
-                        ))}
-                      </div>
+                            <ChevronDown className={cn(
+                              "w-5 h-5 transition-colors",
+                              mobileOpenDropdown === item.name ? "text-primary" : "text-muted-foreground"
+                            )} />
+                          </motion.div>
+                        </button>
+                        <AnimatePresence>
+                          {mobileOpenDropdown === item.name && (
+                            <motion.div
+                              initial={{ height: 0, opacity: 0 }}
+                              animate={{ height: "auto", opacity: 1 }}
+                              exit={{ height: 0, opacity: 0 }}
+                              transition={{ duration: 0.2 }}
+                              className="overflow-hidden"
+                            >
+                              <div className="pl-4 pb-4 space-y-1">
+                                {item.children.map((child) => (
+                                  <Link
+                                    key={child.name}
+                                    href={child.href}
+                                    onClick={() => {
+                                      setIsMobileMenuOpen(false);
+                                      setMobileOpenDropdown(null);
+                                    }}
+                                    className="flex items-center gap-3 py-3 text-muted-foreground hover:text-primary transition-colors"
+                                  >
+                                    <span className="w-1.5 h-1.5 rounded-full bg-primary" />
+                                    {child.name}
+                                  </Link>
+                                ))}
+                              </div>
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      </>
+                    ) : (
+                      <Link
+                        href={item.href}
+                        onClick={() => setIsMobileMenuOpen(false)}
+                        className="flex items-center py-4 text-lg font-medium hover:text-primary transition-colors"
+                      >
+                        {item.name}
+                      </Link>
                     )}
                   </div>
                 ))}
@@ -269,24 +302,29 @@ export function Header() {
                   href="tel:+447403824831"
                   className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors"
                 >
-                  <Phone className="w-5 h-5" />
-                  +44 740 382 4831
+                  <div className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center">
+                    <Phone className="w-4 h-4" />
+                  </div>
+                  <span>+44 740 382 4831</span>
                 </a>
                 <a
                   href="mailto:support@theglowgem.com"
                   className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors"
                 >
-                  <Mail className="w-5 h-5" />
-                  support@theglowgem.com
+                  <div className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center">
+                    <Mail className="w-4 h-4" />
+                  </div>
+                  <span>support@theglowgem.com</span>
                 </a>
               </div>
 
               <button
                 onClick={() => {
                   setIsMobileMenuOpen(false);
+                  setMobileOpenDropdown(null);
                   openModal();
                 }}
-                className="mt-8 w-full py-4 bg-primary text-primary-foreground rounded-full text-center font-medium text-lg"
+                className="mt-8 w-full py-4 bg-primary text-primary-foreground rounded-full text-center font-medium text-lg hover:bg-primary/90 transition-colors"
               >
                 Book Appointment
               </button>

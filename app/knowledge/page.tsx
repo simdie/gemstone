@@ -15,6 +15,7 @@ const articles = [
     image: "/images/knowledge/four-cs.jpg",
     category: "Education",
     readTime: "8 min read",
+    slug: "four-cs-coloured-gemstones",
   },
   {
     title: "Investment Grade Gemstones",
@@ -22,6 +23,7 @@ const articles = [
     image: "/images/knowledge/investment-gems.jpg",
     category: "Investment",
     readTime: "12 min read",
+    slug: "investment-grade-gemstones",
   },
   {
     title: "Ethical Sourcing in the Gemstone Industry",
@@ -29,6 +31,7 @@ const articles = [
     image: "/images/knowledge/ethical-sourcing.jpg",
     category: "Ethics",
     readTime: "6 min read",
+    slug: "ethical-sourcing-gemstone-industry",
   },
   {
     title: "Understanding Gemstone Treatments",
@@ -36,6 +39,7 @@ const articles = [
     image: "/images/knowledge/gem-treatments.jpg",
     category: "Education",
     readTime: "10 min read",
+    slug: "understanding-gemstone-treatments",
   },
   {
     title: "The History of Burmese Rubies",
@@ -43,6 +47,7 @@ const articles = [
     image: "/images/knowledge/burmese-rubies.jpg",
     category: "History",
     readTime: "15 min read",
+    slug: "history-burmese-rubies",
   },
   {
     title: "Certification and Authentication",
@@ -50,6 +55,7 @@ const articles = [
     image: "/images/knowledge/certification.jpg",
     category: "Education",
     readTime: "7 min read",
+    slug: "certification-authentication",
   },
 ];
 
@@ -199,7 +205,7 @@ export default function KnowledgePage() {
             {articles.map((article) => (
               <StaggerItem key={article.title}>
                 <ScaleHover>
-                  <Link href="/contact" className="block group">
+                  <Link href={`/knowledge/${article.slug}`} className="block group">
                     <div className="glass rounded-3xl overflow-hidden h-full">
                       <div className="relative aspect-[16/10] overflow-hidden">
                         <Image
