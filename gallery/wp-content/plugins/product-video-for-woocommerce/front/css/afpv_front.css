@@ -1,0 +1,15 @@
+#afpv_custom{ display: none; }
+#afpv_metacafe, #afpv_vimeo, #afpv_dailymotion, #afpv_facebook, #afpv_youtube{ display: none; }
+
+.related .woocommerce-product-gallery{ width: auto !important; }
+
+#html5-watermark{ display: none !important; }
+
+embed, iframe, object, video{ margin: 0 auto 1.2em !important; }
+
+.feat_image{ margin-bottom: 20px; }
+
+
+.flatvideos { padding-bottom: 10px; }
+
+.vertical-thumbnails{ overflow-y: auto !important; }
