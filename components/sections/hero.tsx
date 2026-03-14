@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Play, Sparkles } from "lucide-react";
+import { ArrowRight, Sparkles } from "lucide-react";
 import { Float, TextReveal, Magnetic } from "@/components/motion";
 
 export function Hero() {
@@ -87,10 +87,13 @@ export function Hero() {
                 </Link>
               </Magnetic>
               <Magnetic>
-                <button className="inline-flex items-center gap-3 px-8 py-4 glass rounded-full font-medium hover:bg-secondary/50 transition-all">
-                  <Play className="w-4 h-4" />
-                  Watch Story
-                </button>
+                <Link
+                  href="/about"
+                  className="inline-flex items-center gap-3 px-8 py-4 glass rounded-full font-medium hover:bg-secondary/50 transition-all"
+                >
+                  <Sparkles className="w-4 h-4" />
+                  Our Story
+                </Link>
               </Magnetic>
             </motion.div>
 
