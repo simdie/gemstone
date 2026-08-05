@@ -54,7 +54,7 @@ export function AboutPreview() {
                 <div className="relative aspect-[4/5]">
                   <Image
                     src="/images/about-glen.jpg"
-                    alt="Gudbrand Sigurd - CEO"
+                    alt="Gary White Beaufort - CEO"
                     fill
                     className="object-cover"
                   />
