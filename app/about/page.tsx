@@ -123,8 +123,8 @@ export default function AboutPage() {
               <GradientBorder>
                 <div className="relative aspect-[4/5] overflow-hidden rounded-2xl">
                   <Image
-                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Sigurd.png-SZuAZ7BzwsUUMMs3y0lNA3xLo3rmlZ.jpeg"
-                    alt="Gudbrand Sigurd - CEO"
+                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Garry1.png-SZuAZ7BzwsUUMMs3y0lNA3xLo3rmlZ.jpeg"
+                    alt="Gary White Beaufort - CEO"
                     fill
                     className="object-cover"
                     priority
@@ -168,7 +168,7 @@ export default function AboutPage() {
             <FadeUp delay={0.2}>
               <div className="prose prose-lg prose-invert max-w-none">
                 <p className="text-muted-foreground leading-relaxed mb-6">
-                  Founded in 1994 by Gudbrand Sigurd, The Glowgem began
+                  Founded in 1994 by Gary White Beaufort, The Glowgem began
                   as a passion project rooted in a deep fascination with natural
                   coloured gemstones. What started as a small operation sourcing
                   exceptional specimens has grown into one of Europe&apos;s leading
