@@ -13,7 +13,7 @@ const team = [
   {
     name: "Gary White Beaufort",
     role: "CEO & Founder",
-    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Sigurd1.png-LGAZYWFopiidN4XgIlnRz26dmYUzrp.jpeg",
+    image: "/images/Garry1.png",
     bio: "Over 30 years of expertise in natural coloured gemstones. Doctorate in economics and certifications from leading gemological institutes worldwide.",
   },
   {
@@ -122,14 +122,17 @@ export default function AboutPage() {
             <FadeUp delay={0.2}>
               <GradientBorder>
                 <div className="relative aspect-[4/5] overflow-hidden rounded-2xl">
+                  
+
                   <Image
-                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Garry1.png-SZuAZ7BzwsUUMMs3y0lNA3xLo3rmlZ.jpeg"
+                    src="/images/Garry2.png"
                     alt="Gary White Beaufort - CEO"
                     fill
                     className="object-cover"
                     priority
-                    unoptimized
                   />
+
+
                 </div>
               </GradientBorder>
             </FadeUp>
