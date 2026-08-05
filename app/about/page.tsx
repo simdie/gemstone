@@ -11,7 +11,7 @@ import { useAppointmentModal } from "@/components/appointment-modal";
 
 const team = [
   {
-    name: "Gudbrand Sigurd",
+    name: "Gary White Beaufort",
     role: "CEO & Founder",
     image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Sigurd2.png-LGAZYWFopiidN4XgIlnRz26dmYUzrp.jpeg",
     bio: "Over 30 years of expertise in natural coloured gemstones. Doctorate in economics and certifications from leading gemological institutes worldwide.",
